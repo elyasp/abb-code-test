@@ -1,8 +1,8 @@
 import React from "react";
 import {
   FeatureHead,
-  FeatureCell,
-  FeatureRow,
+  Cell,
+  Row,
   TableHead,
   TableWrap,
   FooterMenu
@@ -20,17 +20,17 @@ export const Feature = props => {
           </div>
           <div>{props.status}</div>
         </FeatureHead>
-        <FeatureRow>
-          <FeatureCell>
+        <Row>
+          <Cell>
             <b>Control</b>
-          </FeatureCell>
-          <FeatureCell>
+          </Cell>
+          <Cell>
             <b>Dev</b>
-          </FeatureCell>
-          <FeatureCell>
+          </Cell>
+          <Cell>
             <b>Dev Out Total</b>
-          </FeatureCell>
-        </FeatureRow>
+          </Cell>
+        </Row>
       </TableHead>
       <DataUnit xDev="1" yDev="2" zDev="4" diameter="4" />
       <DataUnit xDev="2" yDev="5" zDev="3" diameter="4" />

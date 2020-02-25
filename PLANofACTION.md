@@ -16,3 +16,7 @@
 - Make fixed size container and page. Group Columns on 1 page based on length
 
 - Make responsive, mediaquery > columns.
+
+for backend
+In frontend create a setInterval function that makes axios request to backend every 10 seconds,
+The backend will send random numbers in JSON

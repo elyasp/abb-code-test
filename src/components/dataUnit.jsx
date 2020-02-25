@@ -1,5 +1,5 @@
 import React from "react";
-import { DataBody, FeatureCell, FeatureRow } from "./styles";
+import { DataBody, Cell, Row } from "./styles";
 
 export const DataUnit = props => {
   const handleStatus = dev => {
@@ -8,30 +8,30 @@ export const DataUnit = props => {
 
   return (
     <DataBody>
-      <FeatureRow>
-        <FeatureCell>X</FeatureCell>
-        <FeatureCell>{props.xDev}</FeatureCell>
-        <FeatureCell>0</FeatureCell>
-        <FeatureCell>{handleStatus(props.xDev)}</FeatureCell>
-      </FeatureRow>
-      <FeatureRow>
-        <FeatureCell>Y</FeatureCell>
-        <FeatureCell>{props.yDev}</FeatureCell>
-        <FeatureCell>0</FeatureCell>
-        <FeatureCell>{handleStatus(props.yDev)}</FeatureCell>
-      </FeatureRow>
-      <FeatureRow>
-        <FeatureCell>Z</FeatureCell>
-        <FeatureCell>{props.zDev}</FeatureCell>
-        <FeatureCell>0</FeatureCell>
-        <FeatureCell>{handleStatus(props.zDev)}</FeatureCell>
-      </FeatureRow>
-      <FeatureRow>
-        <FeatureCell>Diameter</FeatureCell>
-        <FeatureCell>{props.diameter}</FeatureCell>
-        <FeatureCell>0</FeatureCell>
-        <FeatureCell>{handleStatus(props.diameter)}</FeatureCell>
-      </FeatureRow>
+      <Row>
+        <Cell>X</Cell>
+        <Cell>{props.xDev}</Cell>
+        <Cell>0</Cell>
+        <Cell>{handleStatus(props.xDev)}</Cell>
+      </Row>
+      <Row>
+        <Cell>Y</Cell>
+        <Cell>{props.yDev}</Cell>
+        <Cell>0</Cell>
+        <Cell>{handleStatus(props.yDev)}</Cell>
+      </Row>
+      <Row>
+        <Cell>Z</Cell>
+        <Cell>{props.zDev}</Cell>
+        <Cell>0</Cell>
+        <Cell>{handleStatus(props.zDev)}</Cell>
+      </Row>
+      <Row>
+        <Cell>Diameter</Cell>
+        <Cell>{props.diameter}</Cell>
+        <Cell>0</Cell>
+        <Cell>{handleStatus(props.diameter)}</Cell>
+      </Row>
     </DataBody>
   );
 };
