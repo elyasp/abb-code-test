@@ -32,9 +32,9 @@ export const Feature = props => {
           </Cell>
         </Row>
       </TableHead>
-      <DataUnit xDev="1" yDev="2" zDev="4" diameter="4" />
-      <DataUnit xDev="2" yDev="5" zDev="3" diameter="4" />
-      <DataUnit xDev="76" yDev="7" zDev="8" diameter="4" />
+      <DataUnit data={props.data} />
+      <DataUnit data={props.data} />
+      <DataUnit data={props.data} />
       <FooterMenu>᛫᛫᛫</FooterMenu>
     </TableWrap>
   );
