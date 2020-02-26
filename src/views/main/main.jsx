@@ -11,8 +11,8 @@ export const Main = () => {
       </Header>
 
       <DemoFeatures>
-        <Feature data={{}} element="SEAM" length="2" status="OK" />
-        <Feature data={{}} element="SLOT" length="1" status="OK" />
+        <Feature data={{}} element="SEAM" length="2" />
+        <Feature data={{}} element="SLOT" length="1" />
         <TextBox>
           <h1>MANUAL OF INTERFACE</h1>
           <p>
@@ -55,9 +55,9 @@ export const Main = () => {
                 Dev Out Total is the sum of all deviations that have been
                 fetched
                 <ul>
-                  <li>A total deviation of max. 40 is considered safe ✔ </li>
+                  <li>A total deviation of max. 40 is considered safe "✔" </li>
                   <li>
-                    A total deviation between 41 and 80 gives a warning ❕{" "}
+                    A total deviation between 41 and 80 gives a warning ⚠️{" "}
                   </li>
                   <li>
                     A total deviation of more than 81 is critical error ❌{" "}

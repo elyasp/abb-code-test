@@ -32,7 +32,7 @@ export const DataUnit = props => {
   // STATUS ICON FOR EACH CONTROL
   const handleControlStatus = dev => {
     const sum = sumDev(dev);
-    return sum <= 40 ? "✔" : sum >= 41 && sum <= 80 ? "❕ " : "❌";
+    return sum <= 40 ? "✔" : sum >= 41 && sum <= 80 ? "⚠️ " : "❌";
   };
 
   // STATUS HEADER FOR FEATURE
@@ -40,12 +40,12 @@ export const DataUnit = props => {
     const sum =
       sumDev(xDevTol) + sumDev(yDevTol) + sumDev(zDevTol) + sumDev(diaDevTol);
     return sum <= 200
-      ? "OK"
+      ? "✔"
       : sum >= 201 && sum <= 320
-      ? "WARN"
+      ? "⚠️"
       : sum >= 321 && sum <= 400
-      ? "X"
-      : "X";
+      ? "❌"
+      : "❌";
   };
 
   // SEND DATA TO PARENT, WHERE FEATUREHEADER IS RENDERED

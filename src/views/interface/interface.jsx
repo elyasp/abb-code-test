@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Feature } from "../../components/feature";
@@ -43,7 +44,7 @@ export const Interface = () => {
           data={Object.values(devData)}
           element="HOLE A"
           length="3"
-          status="OK"
+          status="✔"
         />
         <div>
           <Col>
@@ -51,13 +52,11 @@ export const Interface = () => {
               data={Object.values(devData)}
               element="SEAM A"
               length="1"
-              status="WARN"
             />
             <Feature
               data={Object.values(devData)}
               element="SEAM B"
               length="1"
-              status="WARN"
             />
           </Col>
           <Col>
@@ -65,22 +64,15 @@ export const Interface = () => {
               data={Object.values(devData)}
               element="SLOT A"
               length="1"
-              status="X"
             />
             <Feature
               data={Object.values(devData)}
               element="SLOT B"
               length="1"
-              status="OK"
             />
           </Col>
         </div>
-        <Feature
-          data={Object.values(devData)}
-          element="SLOT C"
-          length="3"
-          status="OK"
-        />
+        <Feature data={Object.values(devData)} element="SLOT C" length="3" />
       </PageWrap>
     </div>
   );

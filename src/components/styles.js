@@ -16,7 +16,7 @@ export const FeatureHead = styled.div `
   display: flex;
   justify-content: space-between;
   background-color: ${({ status }) =>
-    status === "X" ? "#f02c0e" : status === "WARN" ? "#e6c35a" : status === "OK" ? "#3c9654" : "#94b9ff"};
+    status === "❌" ? "#f02c0e" : status === "⚠️" ? "#e6c35a" : status === "✔" ? "#3c9654" : "#94b9ff"};
   padding: 1em 1em;
   color: white;
   text-shadow: 2px 2px 5px #000;
