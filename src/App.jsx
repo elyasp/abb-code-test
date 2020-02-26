@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Interface, Main } from "./views";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {

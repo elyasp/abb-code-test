@@ -5,7 +5,7 @@ const router = new Router();
 
 
 const randomDev = () => {
-  return (Math.floor(Math.random() * 50)).toString()
+  return (Math.floor(Math.random() * 20)).toString()
 }
 
 router.get("/", (req, res, next) => {

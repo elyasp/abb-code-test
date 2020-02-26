@@ -1,51 +1,86 @@
 import React, { useState, useEffect } from "react";
-import { DataBody, Cell, Row } from "./styles";
+import { Cell, Row } from "./styles";
 
 export const DataUnit = props => {
-  const [dataArray, setDataArray] = useState({});
-  console.log(">>>>>", props.data);
+  const [xDevTol, setxDevTol] = useState([]);
+  const [yDevTol, setyDevTol] = useState([]);
+  const [zDevTol, setzDevTol] = useState([]);
+  const [diaDevTol, setDiaDevTol] = useState([]);
 
-  const handleDevOutTotal = array => {
-    setDataArray(array);
-    console.log("THE STATE", typeof dataArray);
+  // UPDATE EACH INDIVIDUAL STATE PER CONTROL
+  const handleDevOutTotal = dev => {
+    const xDevOutTol = parseInt(dev[0]);
+    const yDevOutTol = parseInt(dev[1]);
+    const zDevOutTol = parseInt(dev[2]);
+    const diaDevTol = parseInt(dev[3]);
+
+    setxDevTol(arr => [...arr, xDevOutTol]);
+    setyDevTol(arr => [...arr, yDevOutTol]);
+    setzDevTol(arr => [...arr, zDevOutTol]);
+    setDiaDevTol(arr => [...arr, diaDevTol]);
   };
 
+  // RETURN DEVIATION TOTAL PER CONTROL
+  const sumDev = array => {
+    const newArray = [...array];
+    newArray.splice(0, 1);
+    newArray.unshift(0);
+    const sum = newArray.reduce((acc, val) => acc + val);
+    return sum;
+  };
+
+  // STATUS ICON FOR EACH CONTROL
+  const handleControlStatus = dev => {
+    const sum = sumDev(dev);
+    return sum <= 40 ? "✔" : sum >= 41 && sum <= 80 ? "❕ " : "❌";
+  };
+
+  // STATUS HEADER FOR FEATURE
+  const handleFeatureStatus = () => {
+    const sum =
+      sumDev(xDevTol) + sumDev(yDevTol) + sumDev(zDevTol) + sumDev(diaDevTol);
+    return sum <= 200
+      ? "OK"
+      : sum >= 201 && sum <= 320
+      ? "WARN"
+      : sum >= 321 && sum <= 400
+      ? "X"
+      : "X";
+  };
+
+  // SEND DATA TO PARENT, WHERE FEATUREHEADER IS RENDERED
+  props.status(handleFeatureStatus());
+
+  // CONTINUOUSLY PASS DATA AS IT CHANGES
   useEffect(() => {
     handleDevOutTotal(props.data);
-  }, []);
-
-  console.log("LOOOK", dataArray);
-
-  const handleStatus = dev => {
-    return dev === 0 || dev < 10 ? "OK" : dev > 11 && dev < 20 ? "WARN" : "X";
-  };
+  }, [props.data]);
 
   return (
     <div>
       <Row>
         <Cell>X</Cell>
-        <Cell>{props.data[0]}</Cell>
-
-        <Cell>0</Cell>
-        <Cell>{handleStatus(props.data[0])}</Cell>
+        <Cell>{props.data[0] || 0}</Cell>
+        <Cell>{sumDev(xDevTol)}</Cell>
+        <Cell>{handleControlStatus(xDevTol)}</Cell>
       </Row>
       <Row>
         <Cell>Y</Cell>
-        <Cell>{props.data[1]}</Cell>
-        <Cell>0</Cell>
-        <Cell>{handleStatus(props.data[1])}</Cell>
+        <Cell>{props.data[1] || 0}</Cell>
+        <Cell>{sumDev(yDevTol)}</Cell>
+        <Cell>{handleControlStatus(yDevTol)}</Cell>
       </Row>
       <Row>
         <Cell>Z</Cell>
-        <Cell>{props.data[2]}</Cell>
-        <Cell>0</Cell>
-        <Cell>{handleStatus(props.data[2])}</Cell>
+        <Cell>{props.data[2] || 0}</Cell>
+        <Cell>{sumDev(zDevTol)}</Cell>
+        <Cell>{handleControlStatus(zDevTol)}</Cell>
       </Row>
       <Row>
         <Cell>Diameter</Cell>
-        <Cell>{props.data[3]}</Cell>
-        <Cell>0</Cell>
-        <Cell>{handleStatus(props.data[4])}</Cell>
+        <Cell>{props.data[3] || 0}</Cell>
+        <Cell>{sumDev(diaDevTol)}</Cell>
+        <Cell>{handleControlStatus(diaDevTol)}</Cell>
       </Row>
     </div>
   );

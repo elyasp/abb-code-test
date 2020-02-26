@@ -1,27 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FeatureHead,
   Cell,
   Row,
   TableHead,
   TableWrap,
-  FooterMenu,
-  Wrap
+  FooterMenu
 } from "./styles";
 import { DataUnit } from "./dataUnit";
 
 export const Feature = props => {
-  console.log(props.length);
+  const [featureStatus, setFeatureStatus] = useState();
+
+  // RECEIVE DATA FROM CHILD , SAVE TO STATE AND PASS INTO STYLED-COMPONENT
+  const retrieveStatus = data => {
+    typeof data === "string" && data
+      ? setFeatureStatus(data)
+      : console.log("FAILED");
+  };
+
   return (
     <TableWrap>
-      <Wrap>
+      <div>
         <TableHead>
-          <FeatureHead status={props.status}>
+          <FeatureHead status={featureStatus}>
             <div>O</div>
             <div>
               <b>{props.element}</b>
             </div>
-            <div>{props.status}</div>
+            <div>{featureStatus}</div>
           </FeatureHead>
           <Row>
             <Cell>
@@ -36,10 +43,14 @@ export const Feature = props => {
           </Row>
         </TableHead>
         {Array(parseInt(props.length)).fill(
-          <DataUnit data={props.data} dataTotals={props.dataTotals} />
+          <DataUnit
+            data={props.data}
+            element={props.element}
+            status={retrieveStatus}
+          />
         )}
         <FooterMenu>᛫᛫᛫</FooterMenu>
-      </Wrap>
+      </div>
     </TableWrap>
   );
 };

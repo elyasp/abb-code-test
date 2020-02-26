@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Feature } from "../../components/feature";
-import { PageWrap, Col } from "./styles";
+import { PageWrap, Col, Header, Button } from "./styles";
 import axios from "axios";
 
 export const Interface = () => {
   const [devData, setDevData] = useState({});
-  const [devTolArray, setDevTolArray] = useState({});
-  console.log("ARRAYYYY", Object.values(devData));
   const dataAPI = axios.create({
     baseURL: `/`
   });
+
+  // FETCH DATA, SAVE TO STATE AND PASS STATE AS AN ARRAY TO CHILDREN
 
   async function handleFetch() {
     await dataAPI
       .get("http://localhost:5000")
       .then(x => {
         setDevData(x.data);
-        console.log(devTolArray);
       })
       .catch(err => {
         console.log("ERROR FETCHING DATA", err);
@@ -26,62 +25,61 @@ export const Interface = () => {
 
   useEffect(() => {
     handleFetch();
-    setInterval(handleFetch, 3070);
+    setInterval(handleFetch, 5000);
   }, []);
 
   return (
-    <div className="App">
-      <Link to="/">Go Back to Manual</Link>
-      <p>Overview of parts in Machine-Interface</p>
-      <button onClick={handleFetch}>CLICK TO FETCH DATA</button>
+    <div>
+      <Header>
+        <Link to="/">
+          <Button>GO TO MANUAL</Button>
+        </Link>
+        <h1>PART A</h1>
+        <Button onClick={handleFetch}>CLICK TO FETCH DATA</Button>
+      </Header>
+
       <PageWrap>
         <Feature
           data={Object.values(devData)}
-          dataTotals={devTolArray}
-          element="HOLE"
-          status="WARN"
+          element="HOLE A"
           length="3"
+          status="OK"
         />
         <div>
           <Col>
             <Feature
               data={Object.values(devData)}
-              dataTotals={devTolArray}
-              element="SEAM"
-              status="OK"
+              element="SEAM A"
               length="1"
+              status="WARN"
             />
             <Feature
               data={Object.values(devData)}
-              dataTotals={devTolArray}
-              element="SEAM"
-              status="ERROR"
+              element="SEAM B"
               length="1"
+              status="WARN"
             />
           </Col>
           <Col>
             <Feature
               data={Object.values(devData)}
-              dataTotals={devTolArray}
-              element="SLOT"
-              status="OK"
+              element="SLOT A"
               length="1"
+              status="X"
             />
             <Feature
               data={Object.values(devData)}
-              dataTotals={devTolArray}
-              element="SLOT"
-              status="ERROR"
+              element="SLOT B"
               length="1"
+              status="OK"
             />
           </Col>
         </div>
         <Feature
           data={Object.values(devData)}
-          dataTotals={devTolArray}
-          element="SLOT"
-          status="OK"
+          element="SLOT C"
           length="3"
+          status="OK"
         />
       </PageWrap>
     </div>
