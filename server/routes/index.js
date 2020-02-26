@@ -15,7 +15,7 @@ router.get("/", (req, res, next) => {
     zDev: randomDev(),
     diameter: randomDev()
   });
-  console.log("IT WORKED");
+  console.log("DATA SUCCESFULLY FETCHED");
 });
 
 module.exports = router;

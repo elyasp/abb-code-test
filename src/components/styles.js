@@ -1,8 +1,18 @@
 import styled from "styled-components";
 
 export const TableWrap = styled.div `
-  margin: 5px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  margin: 10px;
+
 `;
+
+export const Wrap = styled.div `
+`;
+
+
 export const TableHead = styled.div `
   display: flex;
   flex-direction: column;
@@ -17,26 +27,17 @@ export const FeatureHead = styled.div `
   text-shadow: 2px 2px 5px #000;
 `;
 
-export const DataBody = styled.div `
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-`;
 export const Row = styled.div `
   display: flex;
   background-color: lightgrey;
 `;
-export const Cell = styled.div `
-  display: flex;
-  justify-content: space-around;
+export const Cell = styled.div ` 
   background-color: lightgrey;
   margin: 10px;
-  min-width: 5em;
+  width: 4em;
   text-shadow: 1px 1px 3px #fff;
 `;
 export const FooterMenu = styled.div `
-  display: flex;
-  justify-content: center;
   font-size: 2em;
   background-color: #e1e3e6;
 `;

@@ -20,3 +20,10 @@
 for backend
 In frontend create a setInterval function that makes axios request to backend every 10 seconds,
 The backend will send random numbers in JSON
+
+4. > > > > > > > > > > > > >
+
+1) Implement total deviator
+2) fix Icons
+3) Create homepage with manual explanation
+4) Fix headerstatus based on average DEV

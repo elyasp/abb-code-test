@@ -5,37 +5,41 @@ import {
   Row,
   TableHead,
   TableWrap,
-  FooterMenu
+  FooterMenu,
+  Wrap
 } from "./styles";
 import { DataUnit } from "./dataUnit";
 
 export const Feature = props => {
+  console.log(props.length);
   return (
     <TableWrap>
-      <TableHead>
-        <FeatureHead status={props.status}>
-          <div>O</div>
-          <div>
-            <b>{props.element}</b>
-          </div>
-          <div>{props.status}</div>
-        </FeatureHead>
-        <Row>
-          <Cell>
-            <b>Control</b>
-          </Cell>
-          <Cell>
-            <b>Dev</b>
-          </Cell>
-          <Cell>
-            <b>Dev Out Total</b>
-          </Cell>
-        </Row>
-      </TableHead>
-      <DataUnit data={props.data} />
-      <DataUnit data={props.data} />
-      <DataUnit data={props.data} />
-      <FooterMenu>᛫᛫᛫</FooterMenu>
+      <Wrap>
+        <TableHead>
+          <FeatureHead status={props.status}>
+            <div>O</div>
+            <div>
+              <b>{props.element}</b>
+            </div>
+            <div>{props.status}</div>
+          </FeatureHead>
+          <Row>
+            <Cell>
+              <b>Control</b>
+            </Cell>
+            <Cell>
+              <b>Dev</b>
+            </Cell>
+            <Cell>
+              <b>Dev Out Total</b>
+            </Cell>
+          </Row>
+        </TableHead>
+        {Array(parseInt(props.length)).fill(
+          <DataUnit data={props.data} dataTotals={props.dataTotals} />
+        )}
+        <FooterMenu>᛫᛫᛫</FooterMenu>
+      </Wrap>
     </TableWrap>
   );
 };
