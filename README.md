@@ -1,6 +1,20 @@
 ### Human Machine Interface
 
-## Fullstack application made as part of a code-test
+## Fullstack application commissioned by ABB Robotics
+
+### Objective
+Create a front-end application that present deviations and conditions of a robotic arm. 
+
+It show some measurements of every feature on a part.
+```Part``` is the produced piece
+```Feature``` is every one of the inspected elements of the part, it can be: Seam, Slot, Hole
+```Control``` is every parameter measured of every Feature like: position (x,y,z), length , diameter…
+Measurements are:
+```Dev``` is the deviation from the expected measurement of the control
+```Dev out total``` is the total deviation outside measurement for the last N pieces measured.
+
+The number of controls can be different on every feature, this is why the component might have different lengths and the control header is red, green, yellow based on if the feature is on expected quality.
+
 
 ## Instructions
 
@@ -21,9 +35,3 @@
 Since i'm using a mock backend with fake data, the same responded json is used in each data unit, resulting in synchronized updating.
 One way I could solve it is by creating a unique axios call for each control (x,y,z,diameter) and have the same amount of states as the combined length of all the features, but the principle remains the same.
 
-## Next Steps
-
-- Create a unique data route for each control Unit.
-- Update styling and visual details, and find the exact SVG icons used in the example.
-- Implement the drop-up '...' menu with functionality like export data, refresh component etc.
-- Make responsive & organize into masonry layout
